@@ -1,22 +1,23 @@
+---
 apiVersion: apps/v1
-kind : Deployment
-metadata: 
+kind: Deployment
+metadata:
   name: gke-hello-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
-    matchLabels: 
+    matchLabels:
       app: gke-hello-app
-  strategy:
+  strategy: 
     rollingUpdate:
       maxSurge: 1
       maxUnavailable: 1
   minReadySeconds: 5
-  template: 
+  template:
     metadata:
-      labels: 
+      labels:
         app: gke-hello-app
-    spec: 
+    spec:
       containers:
       - name: hello-app
         image: gcr.io/google-samples/hello-app:1.0
@@ -27,16 +28,16 @@ spec:
             cpu: 200m
           limits:
             cpu: 200m
-            
+
 ---
-apiVersion: v1
-Kind: service
-metadata:
- name: gke-hello-app-service
+apiVersion: "v1"
+kind: Service
+metadata: 
+  name: gke-hello-app-service
 spec:
- type: LoadBalancer
- ports:
- - port: 80
-   targetPort: 8080
- selector:
-   app: gke-hello-app 
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 8080
+  selector:
+    app: gke-hello-app
