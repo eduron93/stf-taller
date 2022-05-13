@@ -9,7 +9,8 @@ on:
     branches: [main]
 
   workflow_dispatch:
-
+  
+  
 env:
   PROJECT_ID: ${{secrets.GKE_PROJECT}}
   GKE_CLUSTER: gke-demo-eduron
