@@ -11,7 +11,7 @@ on:
 
 env:
   PROJECT_ID: ${{secrets.GKE_PROJECT}}
-  GKE_CLUSTER: gke-demo-dev
+  GKE_CLUSTER: gke-demo-rturcios-d
   KGE_ZONE: us-central1-a
   DEPLOYMENT_NAME: gke-hello-app
 jobs:
